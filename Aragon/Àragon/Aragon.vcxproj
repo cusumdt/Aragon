@@ -38,7 +38,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{10C8D4B6-3413-4480-BE81-9734C5BE8A29}</ProjectGuid>
     <RootNamespace>Pong_Project</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectName>Aragon</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

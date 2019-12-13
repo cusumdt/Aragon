@@ -1,0 +1,14 @@
+﻿  game.cpp
+c:\users\administrador\desktop\aragon\aragon\src\game\game.cpp(1): fatal error C1083: No se puede abrir el archivo incluir: 'Game\game.h': No such file or directory
+  main.cpp
+  credits.cpp
+c:\users\administrador\desktop\aragon\aragon\src\screen\credits\credits.cpp(3): fatal error C1083: No se puede abrir el archivo incluir: 'raylib.h': No such file or directory
+  defeat.cpp
+c:\users\administrador\desktop\aragon\aragon\src\screen\defeat\defeat.cpp(1): fatal error C1083: No se puede abrir el archivo incluir: 'screen\Defeat\defeat.h': No such file or directory
+  gameplay.cpp
+c:\users\administrador\desktop\aragon\aragon\src\screen\gameplay\gameplay.h(4): fatal error C1083: No se puede abrir el archivo incluir: 'raylib.h': No such file or directory
+  menu.cpp
+c:\users\administrador\desktop\aragon\aragon\src\screen\menu\menu.cpp(1): fatal error C1083: No se puede abrir el archivo incluir: 'screen\Menu\menu.h': No such file or directory
+  win.cpp
+c:\users\administrador\desktop\aragon\aragon\src\screen\win\win.cpp(1): fatal error C1083: No se puede abrir el archivo incluir: 'screen\Win\win.h': No such file or directory
+  Generando código...
