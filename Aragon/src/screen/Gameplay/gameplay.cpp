@@ -180,7 +180,7 @@ namespace Game
 				enemy[i].color = GRAY;
 				enemy[i].sourceRec = { 0.0f,0.0f,static_cast<float>(meteor.width),static_cast<float>(meteor.height) };
 				enemy[i].destRec = { enemy[i].rec.x,enemy[i].rec.y,static_cast<float>(meteor.width),static_cast<float>(meteor.height) };
-				enemy[i].origin = { static_cast<float>(meteor.width) / 2,static_cast<float>(meteor.height) / 2 };
+				enemy[i].origin = { static_cast<float>(meteor.width) / 2 -20,static_cast<float>(meteor.height) / 2 -20};
 			}
 			//------------------------
 			// Initialize Power UPS
@@ -196,7 +196,7 @@ namespace Game
 				powerUp[i].color = GRAY;
 				powerUp[i].sourceRec = { 0.0f,0.0f,static_cast<float>(meteor.width),static_cast<float>(meteor.height) };
 				powerUp[i].destRec = { enemy[i].rec.x,enemy[i].rec.y,static_cast<float>(meteor.width),static_cast<float>(meteor.height) };
-				powerUp[i].origin = { static_cast<float>(meteor.width / 2),static_cast<float>(meteor.height / 2)};
+				powerUp[i].origin = { static_cast<float>(meteor.width / 2)-20,static_cast<float>(meteor.height / 2)-20};
 			}
 			// Initialize shoots
 			for (int i = 0; i < NUM_SHOOTS; i++)
@@ -768,7 +768,11 @@ namespace Game
 
 			for (int i = 0; i < activeEnemies; i++)
 			{
-				if (enemy[i].active) DrawTexturePro(meteor, enemy[i].sourceRec, enemy[i].destRec, enemy[i].origin, 0.0f, WHITE);
+				if (enemy[i].active)
+				{
+					DrawTexturePro(meteor, enemy[i].sourceRec, enemy[i].destRec, enemy[i].origin, 0.0f, WHITE);
+					//DrawRectangleRec(enemy[i].rec, enemy[i].color);
+				}
 			}
 			for (int i = 0; i < activePU; i++)
 			{
@@ -816,7 +820,7 @@ namespace Game
 
 				DrawText(FormatText("%04i", score), 20, 20, 40, GRAY);
 				DrawText(FormatText("%03i", static_cast<int>(mana)), 720, 20, 40, SKYBLUE);
-				if (victory) DrawText("YOU WIN", screenWidth / 2 - MeasureText("YOU WIN", 40) / 2, screenHeight / 2 - 40, 40, BLACK);
+				if (victory) DrawText("WIN 100.000 POINTS", screenWidth / 2 - MeasureText("WIN 100.000 POINTS", 40) / 2, screenHeight / 2 - 40, 40, BLACK);
 
 				if (pause)
 				{
