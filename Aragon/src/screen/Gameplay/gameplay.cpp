@@ -14,8 +14,13 @@ namespace Game
 		static const int MAX_PARTICLES = 200;
 		static const int DASH_COST = 20;
 		static const int LIMIT_MANA = 100;
-		static const int NUM_PU 2;
+		static const int NUM_PU = 2;
 		static const int NUM_SHOOTS = 50;
+		static const int ADD_SCORE_MIN = 100;
+		static const int ADD_SCORE_MAX = 100000;
+		static const int ADD_SCORE_MID = 10000;
+		static const int LIMIT_POS = 1000;
+		static const int SPEED_BULLET = 7;
 		// Particle structure with basic data
 
 		struct Particle {
@@ -166,7 +171,7 @@ namespace Game
 			{
 				enemy[i].rec.width = 40;
 				enemy[i].rec.height = 40;
-				enemy[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+				enemy[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 				enemy[i].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - enemy[i].rec.height)));
 				enemy[i].speed.x = 5;
 				enemy[i].speed.y = 5;
@@ -182,7 +187,7 @@ namespace Game
 			{
 				powerUp[i].rec.width = 40;
 				powerUp[i].rec.height = 40;
-				powerUp[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+				powerUp[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 				powerUp[i].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight -  powerUp[i].rec.height)));
 				powerUp[i].speed.x = 5;
 				powerUp[i].speed.y = 5;
@@ -199,7 +204,7 @@ namespace Game
 				shoot[i].rec.y = player.rec.y + player.rec.height / 4;
 				shoot[i].rec.width = 10;
 				shoot[i].rec.height = 5;
-				shoot[i].speed.x = 7;
+				shoot[i].speed.x = SPEED_BULLET;
 				shoot[i].speed.y = 0;
 				shoot[i].active = false;
 				shoot[i].color = RAYWHITE;
@@ -207,32 +212,32 @@ namespace Game
 				shootDiagonalTop[i].rec.y = player.rec.y + player.rec.height / 4;
 				shootDiagonalTop[i].rec.width = 10;
 				shootDiagonalTop[i].rec.height = 5;
-				shootDiagonalTop[i].speed.x = 7;
-				shootDiagonalTop[i].speed.y = 7;
+				shootDiagonalTop[i].speed.x = SPEED_BULLET;
+				shootDiagonalTop[i].speed.y = SPEED_BULLET;
 				shootDiagonalTop[i].active = false;
 				shootDiagonalTop[i].color = RAYWHITE;
 				shootDiagonalDown[i].rec.x = player.rec.x;
 				shootDiagonalDown[i].rec.y = player.rec.y + player.rec.height / 4;
 				shootDiagonalDown[i].rec.width = 10;
 				shootDiagonalDown[i].rec.height = 5;
-				shootDiagonalDown[i].speed.x = 7;
-				shootDiagonalDown[i].speed.y = 7;
+				shootDiagonalDown[i].speed.x = SPEED_BULLET;
+				shootDiagonalDown[i].speed.y = SPEED_BULLET;
 				shootDiagonalDown[i].active = false;
 				shootDiagonalDown[i].color = RAYWHITE;
 				shootDiagonalMidTop[i].rec.x = player.rec.x;
 				shootDiagonalMidTop[i].rec.y = player.rec.y + player.rec.height / 4;
 				shootDiagonalMidTop[i].rec.width = 10;
 				shootDiagonalMidTop[i].rec.height = 5;
-				shootDiagonalMidTop[i].speed.x = 7;
-				shootDiagonalMidTop[i].speed.y = 7;
+				shootDiagonalMidTop[i].speed.x = SPEED_BULLET;
+				shootDiagonalMidTop[i].speed.y = SPEED_BULLET;
 				shootDiagonalMidTop[i].active = false;
 				shootDiagonalMidTop[i].color = RAYWHITE;
 				shootDiagonalMidDown[i].rec.x = player.rec.x;
 				shootDiagonalMidDown[i].rec.y = player.rec.y + player.rec.height / 4;
 				shootDiagonalMidDown[i].rec.width = 10;
 				shootDiagonalMidDown[i].rec.height = 5;
-				shootDiagonalMidDown[i].speed.x = 7;
-				shootDiagonalMidDown[i].speed.y = 7;
+				shootDiagonalMidDown[i].speed.x = SPEED_BULLET;
+				shootDiagonalMidDown[i].speed.y = SPEED_BULLET;
 				shootDiagonalMidDown[i].active = false;
 				shootDiagonalMidDown[i].color = RAYWHITE;
 			}
@@ -436,7 +441,7 @@ namespace Game
 			if (enemiesKill == activeEnemies)
 			{
 				victory = true;
-				score += 10000;
+				score += ADD_SCORE_MAX;
 			}
 
 		}
@@ -471,10 +476,10 @@ namespace Game
 
 						if (enemy[i].active)
 						{
-							enemy[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+							enemy[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 							enemy[i].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - enemy[i].rec.height)));
 							enemiesKill++;
-							score += 100;
+							score += ADD_SCORE_MIN;
 						}
 
 					}
@@ -487,8 +492,8 @@ namespace Game
 				{
 					if (CheckCollisionRecs(player.rec, powerUp[i].rec))
 					{
-						score += 1000;
-						powerUp[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+						score += ADD_SCORE_MID;
+						powerUp[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 						powerUp[i].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - powerUp[i].rec.height)));
 						if (powerUpTier < 2)
 							powerUpTier++;
@@ -509,7 +514,7 @@ namespace Game
 
 					if (enemy[i].rec.x < 0)
 					{
-						enemy[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+						enemy[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 						enemy[i].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - enemy[i].rec.height)));
 					}
 					enemy[i].destRec = { enemy[i].rec.x,enemy[i].rec.y,static_cast<float>(meteor.width),static_cast<float>(meteor.height) };
@@ -524,7 +529,7 @@ namespace Game
 
 					if (powerUp[i].rec.x < 0)
 					{
-						powerUp[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+						powerUp[i].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 						powerUp[i].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - powerUp[i].rec.height)));
 					}
 					powerUp[i].destRec = { powerUp[i].rec.x,powerUp[i].rec.y,static_cast<float>(po.width),static_cast<float>(po.height) };
@@ -595,11 +600,11 @@ namespace Game
 							if (CheckCollisionRecs(shoot[i].rec, enemy[j].rec))
 							{
 								shoot[i].active = false;
-								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 								enemy[j].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - enemy[j].rec.height)));
 								shootRate = 0;
 								enemiesKill++;
-								score += 100;
+								score += ADD_SCORE_MIN;
 							}
 
 							if (shoot[i].rec.x + shoot[i].rec.width >= screenWidth)
@@ -628,11 +633,11 @@ namespace Game
 							if (CheckCollisionRecs(shootDiagonalTop[i].rec, enemy[j].rec))
 							{
 								shootDiagonalTop[i].active = false;
-								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 								enemy[j].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - enemy[j].rec.height)));
 								shootRate = 0;
 								enemiesKill++;
-								score += 100;
+								score += ADD_SCORE_MIN;
 							}
 
 							if (shootDiagonalTop[i].rec.x + shootDiagonalTop[i].rec.width >= screenWidth)
@@ -661,11 +666,11 @@ namespace Game
 							if (CheckCollisionRecs(shootDiagonalDown[i].rec, enemy[j].rec))
 							{
 								shootDiagonalDown[i].active = false;
-								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 								enemy[j].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - enemy[j].rec.height)));
 								shootRate = 0;
 								enemiesKill++;
-								score += 100;
+								score += ADD_SCORE_MIN;
 							}
 
 							if (shootDiagonalDown[i].rec.x + shootDiagonalDown[i].rec.width >= screenWidth)
@@ -696,11 +701,11 @@ namespace Game
 							if (CheckCollisionRecs(shootDiagonalMidDown[i].rec, enemy[j].rec))
 							{
 								shootDiagonalMidDown[i].active = false;
-								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 								enemy[j].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - enemy[j].rec.height)));
 								shootRate = 0;
 								enemiesKill++;
-								score += 100;
+								score += ADD_SCORE_MIN;
 							}
 
 							if (shootDiagonalMidDown[i].rec.x + shootDiagonalMidDown[i].rec.width >= screenWidth)
@@ -729,11 +734,11 @@ namespace Game
 							if (CheckCollisionRecs(shootDiagonalMidTop[i].rec, enemy[j].rec))
 							{
 								shootDiagonalMidTop[i].active = false;
-								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + 1000));
+								enemy[j].rec.x = static_cast<float>(GetRandomValue(screenWidth, screenWidth + LIMIT_POS));
 								enemy[j].rec.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screenHeight - enemy[j].rec.height)));
 								shootRate = 0;
 								enemiesKill++;
-								score += 100;
+								score += ADD_SCORE_MIN;
 							}
 
 							if (shootDiagonalMidTop[i].rec.x + shootDiagonalMidTop[i].rec.width >= screenWidth)
