@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\screen\Credits\credits.cpp">
+      <Filter>Screen\Credits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screen\Defeat\defeat.cpp">
+      <Filter>Screen\Defeat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screen\Gameplay\gameplay.cpp">
+      <Filter>Screen\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screen\Menu\menu.cpp">
+      <Filter>Screen\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screen\Win\win.cpp">
+      <Filter>Screen\Win</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\screen\Credits\credits.h">
+      <Filter>Screen\Credits</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\screen\Defeat\defeat.h">
+      <Filter>Screen\Defeat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\screen\Gameplay\gameplay.h">
+      <Filter>Screen\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\screen\Menu\menu.h">
+      <Filter>Screen\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\screen\Win\win.h">
+      <Filter>Screen\Win</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Game">
+      <UniqueIdentifier>{151ab85d-625a-4c62-8ef3-0ce5868357cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic">
+      <UniqueIdentifier>{0ca99c0a-4cc3-4cee-9c72-4bae00a066d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screen">
+      <UniqueIdentifier>{c4463055-120b-4ab0-b545-30ead988097d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screen\Credits">
+      <UniqueIdentifier>{4cb70d38-19da-48d3-8a83-cef8e64d8599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screen\Gameplay">
+      <UniqueIdentifier>{a2a948d9-c8f0-4183-b20a-1c45c1b56d50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screen\Defeat">
+      <UniqueIdentifier>{ee7cd56c-a31d-41e3-a78d-7d222c6febb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screen\Menu">
+      <UniqueIdentifier>{a6395d5a-3d7d-4afa-baff-5f002c648f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screen\Win">
+      <UniqueIdentifier>{9b401b77-6a4f-436f-93a5-1c7df796c21c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
