@@ -12,8 +12,8 @@ namespace Game
 		extern bool right;
 		void initGame();
 		void updateGame();
-		void DrawGame();
-		void UnloadTexture();
+		
+
 		void RechargeMana();
 		void Dash();
 		void BackGround();
@@ -23,6 +23,8 @@ namespace Game
 		void PlayerActions();
 		void Behaviour();
 		void ShootActions();
+		void DrawGame();
+		void UnloadTexture();
 		struct Player {
 			Rectangle rec;
 			Vector2 speed;

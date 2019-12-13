@@ -91,32 +91,33 @@ namespace Game
 		static bool smooth = false;
 
 		Player player;
-		Texture2D ship;
-		Texture2D shipMovement;
-		Texture2D shipShoot;
-		Texture2D background;
-		Texture2D midground;
-		Texture2D foreground;
-		Texture2D meteor;
-		Texture2D po;
+		static Texture2D ship;
+		static Texture2D shipMovement;
+		static Texture2D shipShoot;
+		static Texture2D background;
+		static Texture2D midground;
+		static Texture2D foreground;
+		static Texture2D meteor;
+		static Texture2D po;
 
 
-		int currentFrame = 0;
-		int framesCounter = 0;
-		int framesSpeed = 8;
-		float scrollingBack = 0.0f;
-		float scrollingMid = 0.0f;
-		float scrollingFore = 0.0f;
-		bool dash = false;
-		float time = 0;
-		Particle mouseTail[MAX_PARTICLES] = { 0 };
-		float gravity;
-		Texture2D smoke;
-		int blending;
-		Vector2 positionExplo;
-		bool activeExplo = false;
-		float mana;
-		int powerUpTier;
+		static int currentFrame = 0;
+		static int framesCounter = 0;
+		static int framesSpeed = 8;
+		static float scrollingBack = 0.0f;
+		static float scrollingMid = 0.0f;
+		static float scrollingFore = 0.0f;
+		static bool dash = false;
+		static float time = 0;
+		static Particle mouseTail[MAX_PARTICLES] = { 0 };
+		static float gravity;
+		static Texture2D smoke;
+		static int blending;
+		static Vector2 positionExplo;
+		static bool activeExplo = false;
+		static float mana;
+		static int powerUpTier;
+		
 		void initGame()
 		{
 			mana = LIMIT_MANA;
