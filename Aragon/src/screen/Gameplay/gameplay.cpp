@@ -16,18 +16,18 @@ namespace Game
 #define LIMIT_MANA 100
 #define NUM_PU 2
 		// Particle structure with basic data
-		typedef struct Particle {
+		struct Particle {
 			Vector2 position;
 			Color color;
 			float alpha;
 			float size;
 			float rotation;
 			bool active;        // NOTE: Use it to activate/deactive particle
-		} Particle;
-		typedef enum { FIRST = 0, SECOND, THIRD } EnemyWave;
+		};
 
+		enum EnemyWave { FIRST = 0, SECOND, THIRD } ;
 
-		typedef struct Enemy {
+		struct Enemy {
 			Rectangle rec;
 			Vector2 speed;
 			bool active;
@@ -35,9 +35,9 @@ namespace Game
 			Rectangle sourceRec;
 			Rectangle destRec;
 			Vector2 origin;
-		} Enemy;
+		};
 
-		typedef struct PowerUp {
+		struct PowerUp {
 			Rectangle rec;
 			Vector2 speed;
 			bool active;
@@ -45,14 +45,14 @@ namespace Game
 			Rectangle sourceRec;
 			Rectangle destRec;
 			Vector2 origin;
-		} PowerUp;
+		};
 
-		typedef struct Shoot {
+		struct Shoot {
 			Rectangle rec;
 			Vector2 speed;
 			bool active;
 			Color color;
-		} Shoot;
+		};
 
 		//------------------------------------------------------------------------------------
 		// Global Variables Declaration
@@ -119,7 +119,7 @@ namespace Game
 				mouseTail[i].position = Vector2({ 0, 0 });
 				mouseTail[i].color = WHITE;
 				mouseTail[i].alpha = 1.0f;
-				mouseTail[i].size = (float)GetRandomValue(1, 30) / 20.0f;
+				mouseTail[i].size = static_cast<float>(GetRandomValue(1, 30)) / 20.0f;
 				mouseTail[i].rotation = 0.0f;
 				mouseTail[i].active = false;
 			}
@@ -186,9 +186,9 @@ namespace Game
 				powerUp[i].speed.y = 5;
 				powerUp[i].active = true;
 				powerUp[i].color = GRAY;
-				powerUp[i].sourceRec = { 0.0f,0.0f,(float)meteor.width,(float)meteor.height };
-				powerUp[i].destRec = { enemy[i].rec.x,enemy[i].rec.y,(float)meteor.width,(float)meteor.height };
-				powerUp[i].origin = { (float)meteor.width / 2,(float)meteor.height / 2 };
+				powerUp[i].sourceRec = { 0.0f,0.0f,static_cast<float>(meteor.width),static_cast<float>(meteor.height) };
+				powerUp[i].destRec = { enemy[i].rec.x,enemy[i].rec.y,static_cast<float>(meteor.width),static_cast<float>(meteor.height) };
+				powerUp[i].origin = { static_cast<float>(meteor.width / 2),static_cast<float>(meteor.height / 2)};
 			}
 			// Initialize shoots
 			for (int i = 0; i < NUM_SHOOTS; i++)
@@ -774,12 +774,12 @@ namespace Game
 					BeginBlendMode(blending);
 					for (int i = 0; i < MAX_PARTICLES; i++)
 					{
-						if (mouseTail[i].active) DrawTexturePro(smoke, Rectangle({ 0.0f, 0.0f, (float)smoke.width, (float)smoke.height }),
+						if (mouseTail[i].active) DrawTexturePro(smoke, Rectangle({ 0.0f, 0.0f, static_cast<float>(smoke.width), static_cast<float>(smoke.height) }),
 							Rectangle({
 								mouseTail[i].position.x, mouseTail[i].position.y, smoke.width*mouseTail[i].size, smoke.height*mouseTail[i].size
 								}),
 							Vector2({
-								(float)(smoke.width*mouseTail[i].size / 2.0f), (float)(smoke.height*mouseTail[i].size / 2.0f)
+								static_cast<float>((smoke.width*mouseTail[i].size / 2.0f)), static_cast<float>((smoke.height*mouseTail[i].size / 2.0f))
 								}), mouseTail[i].rotation,
 							Fade(mouseTail[i].color, mouseTail[i].alpha));
 					}
