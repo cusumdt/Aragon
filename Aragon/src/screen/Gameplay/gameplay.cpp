@@ -363,9 +363,9 @@ namespace Game
 
 		void BackGround()
 		{
-			scrollingBack -= 0.1f;
-			scrollingMid -= 0.5f;
-			scrollingFore -= 1.0f;
+			scrollingBack -= 0.1f * 100 * GetFrameTime();
+			scrollingMid -= 0.5f * 100 * GetFrameTime();
+			scrollingFore -= 1.0f * 100 * GetFrameTime();
 			if (scrollingBack <= -background.width * 2) scrollingBack = 0;
 			if (scrollingMid <= -midground.width * 2) scrollingMid = 0;
 			if (scrollingFore <= -foreground.width * 2) scrollingFore = 0;
@@ -450,10 +450,10 @@ namespace Game
 		void PlayerActions()
 		{
 			// Player movement
-			if (IsKeyDown(KEY_RIGHT)) player.rec.x += player.speed.x;
-			if (IsKeyDown(KEY_LEFT)) player.rec.x -= player.speed.x;
-			if (IsKeyDown(KEY_UP)) player.rec.y -= player.speed.y;
-			if (IsKeyDown(KEY_DOWN)) player.rec.y += player.speed.y;
+			if (IsKeyDown(KEY_RIGHT)) player.rec.x += player.speed.x  * 100 * GetFrameTime();
+			if (IsKeyDown(KEY_LEFT)) player.rec.x -= player.speed.x * 100 * GetFrameTime();
+			if (IsKeyDown(KEY_UP)) player.rec.y -= player.speed.y * 100 * GetFrameTime();
+			if (IsKeyDown(KEY_DOWN)) player.rec.y += player.speed.y * 100 * GetFrameTime();
 			if (IsKeyPressed(KEY_LEFT_SHIFT))
 			{
 				if (mana >= DASH_COST)
@@ -511,7 +511,7 @@ namespace Game
 			{
 				if (enemy[i].active)
 				{
-					enemy[i].rec.x -= enemy[i].speed.x;
+					enemy[i].rec.x -= enemy[i].speed.x * 50 * GetFrameTime();
 
 					if (enemy[i].rec.x < 0)
 					{
@@ -526,7 +526,7 @@ namespace Game
 			{
 				if (powerUp[i].active)
 				{
-					powerUp[i].rec.x -= powerUp[i].speed.x;
+					powerUp[i].rec.x -= powerUp[i].speed.x * 50 * GetFrameTime();
 
 					if (powerUp[i].rec.x < 0)
 					{
@@ -591,7 +591,7 @@ namespace Game
 				if (shoot[i].active)
 				{
 					// Movement
-					shoot[i].rec.x += shoot[i].speed.x;
+					shoot[i].rec.x += shoot[i].speed.x * 100 * GetFrameTime();
 
 					// Collision with enemy
 					for (int j = 0; j < activeEnemies; j++)
@@ -623,8 +623,8 @@ namespace Game
 				if (shootDiagonalTop[i].active)
 				{
 					// Movement
-					shootDiagonalTop[i].rec.x += shootDiagonalTop[i].speed.x;
-					shootDiagonalTop[i].rec.y -= shootDiagonalTop[i].speed.y / 2;
+					shootDiagonalTop[i].rec.x += shootDiagonalTop[i].speed.x * 100 * GetFrameTime();
+					shootDiagonalTop[i].rec.y -= shootDiagonalTop[i].speed.y / 2 * 100 * GetFrameTime();
 
 					// Collision with enemy
 					for (int j = 0; j < activeEnemies; j++)
@@ -656,8 +656,8 @@ namespace Game
 				if (shootDiagonalDown[i].active)
 				{
 					// Movement
-					shootDiagonalDown[i].rec.x += shootDiagonalDown[i].speed.x;
-					shootDiagonalDown[i].rec.y += shootDiagonalDown[i].speed.y / 2;
+					shootDiagonalDown[i].rec.x += shootDiagonalDown[i].speed.x * 100 * GetFrameTime();
+					shootDiagonalDown[i].rec.y += shootDiagonalDown[i].speed.y / 2 * 100 * GetFrameTime();
 
 					// Collision with enemy
 					for (int j = 0; j < activeEnemies; j++)
@@ -691,8 +691,8 @@ namespace Game
 				if (shootDiagonalMidDown[i].active)
 				{
 					// Movement
-					shootDiagonalMidDown[i].rec.x += shootDiagonalMidDown[i].speed.x;
-					shootDiagonalMidDown[i].rec.y += shootDiagonalMidDown[i].speed.y / 4;
+					shootDiagonalMidDown[i].rec.x += shootDiagonalMidDown[i].speed.x * 100 * GetFrameTime();
+					shootDiagonalMidDown[i].rec.y += shootDiagonalMidDown[i].speed.y / 4 * 100 * GetFrameTime();
 
 					// Collision with enemy
 					for (int j = 0; j < activeEnemies; j++)
@@ -724,8 +724,8 @@ namespace Game
 				if (shootDiagonalMidTop[i].active)
 				{
 					// Movement
-					shootDiagonalMidTop[i].rec.x += shootDiagonalMidTop[i].speed.x;
-					shootDiagonalMidTop[i].rec.y -= shootDiagonalMidTop[i].speed.y / 4;
+					shootDiagonalMidTop[i].rec.x += shootDiagonalMidTop[i].speed.x * 100 * GetFrameTime();
+					shootDiagonalMidTop[i].rec.y -= shootDiagonalMidTop[i].speed.y / 4 * 100 * GetFrameTime();
 
 					// Collision with enemy
 					for (int j = 0; j < activeEnemies; j++)
