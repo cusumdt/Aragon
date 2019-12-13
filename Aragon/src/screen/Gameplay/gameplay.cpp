@@ -271,6 +271,17 @@ namespace Game
 					Behaviour();
 					ShootActions();
 				}
+				else
+				{
+					if (IsKeyPressed(KEY_ENTER))
+					{
+						gameOver = false;
+						firstInit = true;
+						activePU = 0;
+						powerUpTier = 0;
+						screen = MENU;
+					}
+				}
 			}
 			else
 				if (IsKeyPressed(KEY_ENTER))
@@ -747,6 +758,14 @@ namespace Game
 			DrawTextureEx(foreground, Vector2({ scrollingFore, 70 }), 0.0f, 2.0f, WHITE);
 			DrawTextureEx(foreground, Vector2({ foreground.width * 2 + scrollingFore, 70 }), 0.0f, 2.0f, WHITE);
 
+			for (int i = 0; i < activeEnemies; i++)
+			{
+				if (enemy[i].active) DrawTexturePro(meteor, enemy[i].sourceRec, enemy[i].destRec, enemy[i].origin, 0.0f, WHITE);
+			}
+			for (int i = 0; i < activePU; i++)
+			{
+				if (powerUp[i].active) DrawTexturePro(po, powerUp[i].sourceRec, powerUp[i].destRec, powerUp[i].origin, 0.0f, WHITE);
+			}
 			if (!gameOver)
 			{
 
@@ -768,25 +787,12 @@ namespace Game
 					EndBlendMode();
 				}
 				//DrawRectangleRec(player.rec, player.color);
-				if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_UP))
-					DrawTexture(shipMovement, player.rec.x, player.rec.y, WHITE);
-				else if (IsKeyDown(KEY_SPACE))
-					DrawTexture(shipShoot, player.rec.x, player.rec.y, WHITE);
-				else
-					DrawTexture(ship, player.rec.x, player.rec.y, WHITE);
-
+			
 				if (wave == FIRST) DrawText("FIRST WAVE", screenWidth / 2 - MeasureText("FIRST WAVE", 40) / 2, screenHeight / 2 - 40, 40, Fade(RED, alpha));
 				else if (wave == SECOND) DrawText("SECOND WAVE", screenWidth / 2 - MeasureText("SECOND WAVE", 40) / 2, screenHeight / 2 - 40, 40, Fade(RED, alpha));
 				else if (wave == THIRD) DrawText("THIRD WAVE", screenWidth / 2 - MeasureText("THIRD WAVE", 40) / 2, screenHeight / 2 - 40, 40, Fade(RED, alpha));
 
-				for (int i = 0; i < activeEnemies; i++)
-				{
-					if (enemy[i].active) DrawTexturePro(meteor, enemy[i].sourceRec, enemy[i].destRec, enemy[i].origin, 0.0f, WHITE);
-				}
-				for (int i = 0; i < activePU; i++)
-				{
-					if (powerUp[i].active) DrawTexturePro(po, powerUp[i].sourceRec, powerUp[i].destRec, powerUp[i].origin, 0.0f, WHITE);
-				}
+			
 				for (int i = 0; i < NUM_SHOOTS; i++)
 				{
 					if (shoot[i].active) DrawRectangleRec(shoot[i].rec, shoot[i].color);
@@ -804,12 +810,29 @@ namespace Game
 				DrawText(FormatText("%03i", static_cast<int>(mana)), 720, 20, 40, SKYBLUE);
 				if (victory) DrawText("YOU WIN", screenWidth / 2 - MeasureText("YOU WIN", 40) / 2, screenHeight / 2 - 40, 40, BLACK);
 
-				if (pause) DrawText("GAME PAUSED", screenWidth / 2 - MeasureText("GAME PAUSED", 40) / 2, screenHeight / 2 - 40, 40, GRAY);
+				if (pause)
+				{
+					DrawText("GAME PAUSED", screenWidth / 2 - MeasureText("GAME PAUSED", 40) / 2, screenHeight / 2 - 40, 40, GRAY);
+					DrawText("PRESS ENTER TO MENU", screenWidth / 2 - MeasureText("PRESS ENTER TO MENU", 40) / 2, screenHeight / 2 + 40, 40, GRAY);
+				}
+
 
 
 			}
 			else
-				DrawText("La comiste BB", screenWidth / 2 - MeasureText("GAME PAUSED", 40) / 2, screenHeight / 2 - 40, 40, GRAY);
+			{
+				DrawText("DEFEAT", screenWidth / 2 - MeasureText("DEFEAT", 40) / 2, screenHeight / 2 - 40, 40, GRAY);
+				DrawText("PRESS ENTER", screenWidth / 2 - MeasureText("PRESS ENTER", 40) / 2, screenHeight / 2 + 40, 40, GRAY);
+			}
+
+			
+			if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_UP))
+				DrawTexture(shipMovement, player.rec.x, player.rec.y, WHITE);
+			else if (IsKeyDown(KEY_SPACE))
+				DrawTexture(shipShoot, player.rec.x, player.rec.y, WHITE);
+			else
+				DrawTexture(ship, player.rec.x, player.rec.y, WHITE);
+
 		}
 
 		void UnloadTexture()
