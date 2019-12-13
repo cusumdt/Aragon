@@ -13,13 +13,6 @@ namespace Game
 		void initGame();
 		void updateGame();
 		void DrawGame();
-		struct Player {
-			Rectangle rec;
-			Vector2 speed;
-			Color color;
-		};
-		extern Player player;
-		extern float dragonHeight;
 		void UnloadTexture();
 		void RechargeMana();
 		void Dash();
@@ -30,6 +23,12 @@ namespace Game
 		void PlayerActions();
 		void Behaviour();
 		void ShootActions();
+		struct Player {
+			Rectangle rec;
+			Vector2 speed;
+			Color color;
+		};
+		extern Player player;
 	}
 }
 #endif

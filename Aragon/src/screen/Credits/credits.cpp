@@ -9,17 +9,17 @@ namespace Game
 {
 	namespace initCredits
 	{
-		Texture2D fond;
-		Texture2D menu;
-		Texture2D negativeMenu;
-		Rectangle recMenu;
+		static Texture2D fond;
+		static Texture2D menu;
+		static Texture2D negativeMenu;
+		static Rectangle recMenu;
 		static int positionY = screenHeight- screenHeight/100*60;
 		static bool menuButtonAnimationOn;
 		static bool exitButtonAnimationOn;
 		static bool firstInit = true;
-		
 		static int fontSize = 20;
-		void initCredits() 
+
+		static void initCredits()
 		{
 			if (firstInit)
 			{

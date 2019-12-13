@@ -19,30 +19,30 @@ namespace Game
 		static bool muteOnButtonAnimationOn;
 		static bool quitButtonAnimationOn;
 		static bool creditsButtonAnimationOn;
-		Texture2D fond;
-		Texture2D play;
-		Texture2D negativePlay;
-		Texture2D credits;
-		Texture2D negativeCredits;
-		Texture2D help;
-		Texture2D negativeHelp;
-		Texture2D exit;
-		Texture2D negativeExit;
-		Texture2D mute;
-		Texture2D negativeMute;
-		Texture2D on;
-		Texture2D negativeOn;
-		Texture2D quit;
-		Texture2D negativeQuit;
-		Rectangle recplay;
-		Rectangle recCredits;
-		Rectangle recHelp;
-		Rectangle recMuteOn;
-		Rectangle recExit;
-		Rectangle recQuit;
-		
+		static Texture2D fond;
+		static Texture2D play;
+		static Texture2D negativePlay;
+		static Texture2D credits;
+		static Texture2D negativeCredits;
+		static Texture2D help;
+		static Texture2D negativeHelp;
+		static Texture2D exit;
+		static Texture2D negativeExit;
+		static Texture2D mute;
+		static Texture2D negativeMute;
+		static Texture2D on;
+		static Texture2D negativeOn;
+		static Texture2D quit;
+		static Texture2D negativeQuit;
+		static Rectangle recplay;
+		static Rectangle recCredits;
+		static Rectangle recHelp;
+		static Rectangle recMuteOn;
+		static Rectangle recExit;
+		static Rectangle recQuit;
 		static bool firstInit=true;
-		void initSize()
+
+		static void initSize()
 		{
 			if (firstInit) 
 			{

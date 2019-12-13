@@ -9,17 +9,17 @@ namespace Game
 {
 	namespace initDefeat
 	{
-		Texture2D fond;
-		Rectangle recExit;
-		Texture2D exit;
-		Texture2D negativeExit;
-		Texture2D menu;
-		Texture2D negativeMenu;
-		Rectangle recMenu;
+		static Texture2D fond;
+		static Rectangle recExit;
+		static Texture2D exit;
+		static Texture2D negativeExit;
+		static Texture2D menu;
+		static Texture2D negativeMenu;
+		static Rectangle recMenu;
 		static bool menuButtonAnimationOn;
 		static bool exitButtonAnimationOn;
 		static bool firstInit = true;
-		void initDefeat() 
+		static void initDefeat()
 		{
 			if (firstInit)
 			{
