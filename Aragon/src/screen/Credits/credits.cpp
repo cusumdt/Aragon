@@ -2,8 +2,9 @@
 
 #include "raylib.h"
 
-#include "screen\Gameplay\gameplay.h"
 #include "Game\game.h"
+#include "screen\Gameplay\gameplay.h"
+
 namespace Game
 {
 	namespace initCredits

@@ -6,8 +6,6 @@ namespace Game
 	{
 		void UpdateCredits();
 		void DrawCredits();
-		void drawEnemi();
 	}
-
 }
 #endif // !CREDITS_H

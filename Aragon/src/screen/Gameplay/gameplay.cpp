@@ -1,4 +1,5 @@
 #include "gameplay.h"
+
 #include "Game\game.h"
 
 namespace Game
@@ -6,16 +7,17 @@ namespace Game
 	namespace Gameplay
 	{
 
-#define NUM_SHOOTS 50
-#define NUM_MAX_ENEMIES 50
-#define FIRST_WAVE 30
-#define SECOND_WAVE 40
-#define THIRD_WAVE 50
-#define MAX_PARTICLES 200
-#define DASH_COST 20
-#define LIMIT_MANA 100
-#define NUM_PU 2
+		static const int NUM_MAX_ENEMIES = 50;
+		static const int FIRST_WAVE = 30;
+		static const int SECOND_WAVE = 40;
+		static const int THIRD_WAVE = 50;
+		static const int MAX_PARTICLES = 200;
+		static const int DASH_COST = 20;
+		static const int LIMIT_MANA = 100;
+		static const int NUM_PU 2;
+		static const int NUM_SHOOTS = 50;
 		// Particle structure with basic data
+
 		struct Particle {
 			Vector2 position;
 			Color color;
