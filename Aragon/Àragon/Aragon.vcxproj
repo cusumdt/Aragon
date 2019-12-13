@@ -107,7 +107,7 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>$(ProjectDir)copy.bat "$(SolutionDir)" "$(TargetDir)"</Command>
+      <Command>"$(ProjectDir)"copy.bat "$(SolutionDir)" "$(TargetDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -139,7 +139,7 @@ XCOPY "$(SolutionDir)res" "$(SolutionDir)bin\res" /E</Command>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>$(ProjectDir)copy.bat "$(SolutionDir)" "$(TargetDir)"</Command>
+      <Command>"$(ProjectDir)"copy.bat "$(SolutionDir)" "$(TargetDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
